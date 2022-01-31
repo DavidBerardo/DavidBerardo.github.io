@@ -1,0 +1,46 @@
+img {
+  display: inline-block;
+  margin: auto;
+  text-align:center;
+}
+
+.row {
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column {
+  flex: 50.0%;
+  padding: 5px;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-gap: 20px;
+  /*background-color: #2196F3;*/
+  padding: 10px;
+}
+
+.grid-item{
+  display: flex;
+  background-color: rgba(100, 255, 100, 0.1);
+  border: 2px solid rgba(0,0,0);
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  /*width: fit-content()*/
+  height: 50px;
+  width: fit-content();
+  /*text-decoration: underline;*/
+}
+
+
+
+
+body {
+  background: linear-gradient(to bottom, #4CABF8, #6A41EF 400px,#BFA089 1400px, #405868 2000px);
+}
