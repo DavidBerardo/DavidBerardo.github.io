@@ -159,10 +159,12 @@ write('<link rel="stylesheet" href="website.css">')
 write('</head>')
 write('<body>')
 
+#title at top of page
 write('<div style="text-align:center; margin:auto; font-size:50px;"><b>MIT Mystery Hunt 2022<b></div>')
 write('<br><hr /><br>')
 write('<div style="text-align:center; margin:auto; font-size:30px;"><b>⭐Astro Pals Progress Tracker⭐<b></div>')
 write('<br>')
+
 #generate investigation stuff
 intro = p_round(round_names[0],data[data["Round"]==round_names[0]],color=color_dict[round_names[0]])
 gen_ps_col(intro,cols=5,meta_width=25)
