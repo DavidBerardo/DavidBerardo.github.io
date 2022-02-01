@@ -36,7 +36,7 @@ def gen_puzzle_html(puzzle):
 def gen_header(p_round,ministry=False,solves = []):
 	write('<div style="text-align: center">')
 	write(f'<a href = "{p_round.url}" target="_blank">')
-	write(f'<img src="{p_round.logo}" alt="{p_round.name}">')
+	write(f'<img src="{p_round.logo}" id="{p_round.name}" alt="{p_round.name}">')
 	write('</a>')
 	if ministry:
 		write(f'<p style="text-align:center; font-size:25px">Solved: {solves[0]}/{p_round.n_puzzles} + {solves[1]}/5 + {solves[2]}/2</p>')
@@ -156,8 +156,22 @@ write('<!DOCTYPE html>')
 write('<html>')
 write('<head>')
 write('<link rel="stylesheet" href="website.css">')
+write('<script src="scripts.js"></script>')
 write('</head>')
 write('<body>')
+
+#generate navbar
+write('<div class="navbar" id="navbar">')
+write(f'<a onclick="scrollToTargetAdjusted(\'{round_names[0]}\')">{round_names[0]}</a>')
+write(f'<a onclick="scrollToTargetAdjusted(\'{round_names[1]}\')">{round_names[1]}</a>')
+write(f'<a onclick="scrollToTargetAdjusted(\'Pen Station\')">Pen Station</a>')
+for i in range(5):
+	#write(f'<a onClick="navClick("{r}")">{r}</a>')
+	#write(f'<a class="anchor" href="#{round_names[2+2*i]}" style="top:-150px">{round_names[2+2*i]}/{round_names[2+2*i+1]}</a>')
+	write(f'<a onclick="scrollToTargetAdjusted(\'{round_names[2+2*i]}\')">{round_names[2+2*i]}/{round_names[2+2*i+1]}</a>')
+write(f'<a onclick="scrollToTargetAdjusted(\'{round_names[-2]}\')">{round_names[-2]}</a>')
+write(f'<a onclick="scrollToTargetAdjusted(\'{round_names[-1]}\')">{round_names[-1]}</a>')
+write('</div>')
 
 #title at top of page
 write('<div style="text-align:center; margin:auto; font-size:50px;"><b>MIT Mystery Hunt 2022<b></div>')
@@ -182,7 +196,7 @@ write('</div>')
 write('<div class = "column" style="background: rgb(0,0,0,0); border: None">')
 write('<div style="text-align: center">')
 write(f'<a href = "https://www.bookspace.world/pen-station/" target="_blank">')
-write(f'<img src="pen_station_logo.png" alt="pen_station" width="400" height="auto">')
+write(f'<img src="pen_station_logo.png" id="Pen Station" alt="pen_station" width="400" height="auto">')
 write('</a>')
 write(f'<p style="text-align:center; font-size:25px">Sub-Rounds Solved: {np.sum([p.meta.status//2 for p in ps_rounds])}/10</p>')
 

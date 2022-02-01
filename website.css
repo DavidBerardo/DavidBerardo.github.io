@@ -95,9 +95,14 @@ body {
  
  /*background-image: linear-gradient(to top, #fc5c7d, #6a82fb);*/
  /*background-image: linear-gradient(to bottom,#6CEBBE,#95B2B0,#647AA3,#334195,#020887)*/
+ padding-top: 100px;
  background-image: linear-gradient(to bottom,#C4E7D4,#C4DACF,#B9C0DA,#998DA0,#63585E);
 }
-
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
+}
 .wrapper
 {
   padding-bottom: 90px;
@@ -159,3 +164,34 @@ hr {
   background-color:white; 
   }
 
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background: #ddd;
+  color: black;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a.anchor {
+  
+}
