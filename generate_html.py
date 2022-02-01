@@ -10,14 +10,17 @@ def gen_puzzle_html(puzzle):
 	write('<div class=puzzleCell>')
 	border_rad = [3,7,5][puzzle.meta]
 	font_size = [20,30,24][puzzle.meta]
+	print(puzzle.name,puzzle)
 	write(f'<div class="puzzleInner"  style="background-color:{colors[puzzle.status]}; font-size:{font_size}px;border: {border_rad}px solid;border-color:rgb(0,0,0,0.8)">')
-	write(f'<div class="initial">{puzzle.name}</div>')
+	write(f'<div class="initial">{"Meta: "*(puzzle.meta > 0) + puzzle.name}</div>')
 	write('<div class="hovered" style="font-size:20px">')
 	write(f'<div ><a href="{puzzle.puzzlink}" target="_blank">Puzzle</a></div>')
 	write(f'<div ><a href="{puzzle.sheetlink}" target="_blank">Spreadsheet</a></div>')
 	write('</div>')
 	write('</div>')
-	write(f'<div style="color:rgb(0,75,0); background-color:rgb(255,255,255,0)" contenteditable="true"><b>{puzzle.solution}</b></div>')
+	#write(f'<div style="color:rgb(0,75,0); background-color:rgb(255,255,255,0)" contenteditable="true"><b><spoiler>{"SOLUTION"*(puzzle.status==2)}</spoiler></b></div>')
+	write(f'<div style="color:rgb(0,75,0); background-color:rgb(255,255,255,0)" contenteditable="true"><b><spoiler>{puzzle.solution}</spoiler></b></div>')
+
 	write('</div>')
 	return
 
@@ -35,14 +38,16 @@ def gen_header(p_round,ministry=False,solves = []):
 
 def gen_ps_col(ps_round,cols=3,borderstyle=""):
 	print(borderstyle)
-	write(f'<div class = "column" style="{borderstyle}"">')
+	write(f'<div class = "column" style="{borderstyle}">')
 	gen_header(ps_round)
 	write(f'<div class="grid-container" style="grid-template-columns: auto; width:65%; margin: auto">\n')
 	gen_puzzle_html(ps_round.meta)
 	write('</div>')
 
-
-	write(f'<div class="grid-container" style="grid-template-columns: {f"{int(100/cols)-2}% "*cols}; float:center; width: 90%; margin:auto;">')
+	offset = 1.4 if cols == 5 else 2.1
+	write(f'<div class="grid-container" style="grid-template-columns: {f"{int(100/cols)-offset}% "*cols}; float:center; width: 75%; margin:auto;">')
+	#write(f'<div class="grid-container" style="grid-template-columns: {"1fr"*cols}; float:center; grid-column-end: auto; width: 90%; margin:auto;">')
+	
 	for p in ps_round.puzzles:
 		gen_puzzle_html(p)
 	write('</div>')
@@ -58,12 +63,12 @@ def gen_m_content(p_round):
 	for p in p_round.all_puzzles:
 		if p.meta == 1: gen_puzzle_html(p)
 	write('</div>')
-	write(f'<div class="grid-container" style="grid-template-columns: {"18% "*5}; width:75%; margin: auto">\n')
+	write(f'<div class="grid-container" style="grid-template-columns: {"18.6% "*5}; width:75%; margin: auto">\n')
 	for p in p_round.all_puzzles:
 		if p.meta == 2: gen_puzzle_html(p)
 	write('</div>')
 
-	write(f'<div class="grid-container" style="grid-template-columns: {"18% "*5}; float:center; width: 80%; margin:auto">')
+	write(f'<div class="grid-container" style="grid-template-columns: {"18.7% "*5}; float:center; width: 80%; margin:auto">')
 	for p in p_round.puzzles:
 		gen_puzzle_html(p)
 	write('</div>')
@@ -131,7 +136,7 @@ color_dict = {round_names[i]:round_colors[i] for i in range(len(round_names))}
 #pen station rounds
 ps_rounds = [p_round(i,data[data['Round']==i],color=color_dict[i]) for i in round_names[2:-2]]
 
-hf = open('website.html','w+')
+hf = open('index.html','w+')
 
 write('<!DOCTYPE html>')
 write('<html>')
