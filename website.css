@@ -37,22 +37,26 @@ img {
 
 .puzzleInner {
   /*background-color: rgba(100, 255, 100, 0);*/
-  border: 3px solid;
+  /*border: 3px solid;*/
+  /*border: 3px;*/
   padding: 10px 0;
   font-size: 20px;
   text-align: center;
   border-radius: 5px;
   align-items: center;
   height:60px;
+  min-width: 100%;
+  border-color: black;
   display:flex;
   justify-content: center;
   user-select: none;
+  /*position: relative;*/
 -webkit-transition: all 0.3s ease-out;
 -moz-transition: all 0.3s ease-out;
 -ms-transition: all 0.3s ease-out;
 -o-transition: all 0.3s ease-out;
 transition: all 0.3s ease-out;
-min-width: 100%;
+z-index:0;
 }
 
 .puzzleInner .hovered { display: none; }
@@ -60,13 +64,12 @@ min-width: 100%;
 .puzzleInner:hover .initial { display: none; }
 
 .puzzInner:hover {
-background: rgba(16, 16, 200, 0.5);
-border: 5px solid black;
-color: white;
-/*text-align: center;*/
-position: relative;
-padding: 10px 0;
-font-size: 20px;
+  background: rgba(16, 16, 200, 0.5);;
+  color: white;
+  /*text-align: center;*/
+  position: relative;
+  padding: 10px 0;
+  font-size: 20px;
 }
 
 
@@ -181,17 +184,53 @@ hr {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
+  position:relative;
+  z-index: 1;
 }
 
 .navbar a:hover {
   background: #ddd;
   color: black;
+  z-index: 1;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-a.anchor {
-  
+.butt1 {
+    border: 2px solid black;
+    border-radius:2px;
+    background-color:rgb(220,220,220);
+    height:15px;
+    width:15px;
+    cursor:pointer;
+    position:absolute;
+    left:0px;
+    top:0%;
 }
+.butt2 {
+    border: 2px solid black;
+    border-radius:2px;
+    background-color: rgb(200,93,38);
+    height:15px;
+    width:15px;
+    cursor:pointer;
+    position:absolute;
+    left:15px;
+    top:0px;
+}
+.butt3 {
+    border: 2px solid black;
+    border-radius:2px;
+    background-color: rgb(76,190,108);
+    height:15px;
+    width:15px;
+    cursor:pointer;
+    position:absolute;
+    left:30px;
+    top:0px;
+}
+
+
+

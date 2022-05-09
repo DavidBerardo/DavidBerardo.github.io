@@ -21,9 +21,13 @@ def gen_puzzle_html(puzzle):
 	border_rad = [3,7,5][puzzle.meta]
 	font_size = [20,30,24][puzzle.meta]
 	#print(puzzle.name,puzzle)
-	write(f'<div class="puzzleInner"  style="background-color:{colors[puzzle.status]}; font-size:{font_size}px;border: {border_rad}px solid;border-color:rgb(0,0,0,0.8)">')
+	write(f'<div id="puzzBox{puzzle.name}"class="puzzleInner"  style="background-color:{colors[puzzle.status]}; font-size:{font_size}px; border:{border_rad}px solid rgb(0,0,0,0.7);">')
 	write(f'<div class="initial">{"Meta: "*(puzzle.meta > 0) + puzzle.name}</div>')
-	write('<div class="hovered" style="font-size:20px">')
+	write(f'<div class="hovered" style="font-size:20px;">')
+	#if puzzle.status < 2:
+	#	write(f'<input class="butt1" type="button" onclick="setState(0,\'puzzBox{puzzle.name}\')"/>')
+	#	write(f'<input class="butt2" type="button" onclick="setState(1,\'puzzBox{puzzle.name}\')"/>')
+	#	write(f'<input class="butt3" type="button" onclick="setState(2,\'puzzBox{puzzle.name}\')"/>')
 	write(f'<div ><a href="{puzzle.puzzlink}" target="_blank">Puzzle</a></div>')
 	write(f'<div ><a href="{puzzle.sheetlink}" target="_blank">Spreadsheet</a></div>')
 	write('</div>')
